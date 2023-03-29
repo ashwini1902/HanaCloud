@@ -1,0 +1,19 @@
+_schema-version: "2.1"
+ID: HanaCloud
+version: 0.0.1
+modules:
+- name: hdb
+  type: hdb
+  path: hdb
+  requires:
+  - name: hdi_hdb
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+resources:
+- name: hdi_hdb
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: SAP_HANA
+  properties:
+    hdi-container-name: ${service-name}
